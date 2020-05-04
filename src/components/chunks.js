@@ -46,14 +46,20 @@ function Chunk({ chunk }) {
   );
 }
 
+const useModulesStyles = makeStyles({
+  table: {
+    marginTop: "60px",
+  },
+});
+
 export default function Chunks() {
   console.log(example.modules);
-  // const classes = useModulesStyles();
+  const classes = useModulesStyles();
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <TableContainer component={Paper}>
-        <Table>
+        <Table className={classes.table}>
           <TableHead>
             <TableRow>
               <TableCell>id</TableCell>
