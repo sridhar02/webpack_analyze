@@ -1,11 +1,14 @@
 import React from "react";
+
 import Grid from "@material-ui/core/Grid";
-// import { Typography } from "@material-ui/core";
+
+import Navbar from "./navbar";
 
 export default function Home({ classes }) {
   return (
     <div>
       <Grid container>
+        <Navbar />
         <Grid item md={12}>
           <h1>Webpack analyze</h1>
         </Grid>
