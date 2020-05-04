@@ -27,7 +27,7 @@ export default function Navbar() {
             </Link>
           </Typography>
           <Typography>
-            <Link href="/Home" className={classes.text}>
+            <Link href="/home" className={classes.text}>
               Home
             </Link>
           </Typography>
@@ -47,17 +47,17 @@ export default function Navbar() {
             </Link>
           </Typography>
           <Typography>
-            <Link href="/Home" className={classes.text}>
+            <Link href="/warnings" className={classes.text}>
               Warnings
             </Link>
           </Typography>
           <Typography>
-            <Link href="/Home" className={classes.text}>
+            <Link href="/errors" className={classes.text}>
               Errors
             </Link>
           </Typography>
           <Typography>
-            <Link href="/Home" className={classes.text}>
+            <Link href="/hints" className={classes.text}>
               Hints
             </Link>
           </Typography>
