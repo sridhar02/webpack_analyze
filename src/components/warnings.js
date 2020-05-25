@@ -5,9 +5,17 @@ import Navbar from "./navbar";
 const example = require("../example1.json");
 
 const useWarningsStyles = makeStyles({
-  main: {
-    border: "1px solid black",
+  root: {
     marginTop: "80px",
+  },
+  main: {
+    margin: "10px",
+    backgroundColor: "#ddd",
+    padding: "10px",
+    marginBottom: "20px", 
+  },
+  warning: {
+    margin: "10px",
   },
 });
 
@@ -17,12 +25,18 @@ export default function Warnings() {
   const classes = useWarningsStyles();
   const warnings = example.warnings.map((warning) => (
     <div key={warning} className={classes.main}>
-      <h4>{warning}</h4>
+      <h4>
+        {warning.split("\n").map((module, index) => (
+          <div key={index} className={classes.warning}>
+            {module}
+          </div>
+        ))}
+      </h4>
     </div>
   ));
 
   return (
-    <div>
+    <div className={classes.root}>
       <Navbar />
       {warnings}
     </div>
