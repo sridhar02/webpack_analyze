@@ -9,8 +9,10 @@ const useHomeStyles = makeStyles((theme) => ({
   common: {
     textAlign: "center",
     backgroundColor: "#f5f5f5",
-    padding:"19px",
-    border:"1px solid #e3e3e3"
+    padding: "19px",
+    border: "1px solid #e3e3e3",
+    borderRadius: "4px",
+    marginBottom: "20px",
   },
 }));
 
@@ -26,25 +28,27 @@ export default function Home() {
         </Grid>
         <Grid container>
           <Grid item md={3}>
-            <h1 className={classes.common}>
-              <a
-                href="https://webpack.js.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Webpack
-              </a>
-
-              <div>
+            <div>
+              <h1 className={classes.common}>
                 <a
-                  href="https://github.com/webpack/webpack/releases"
+                  href="https://webpack.js.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {example.version}
+                  Webpack
                 </a>
-              </div>
-            </h1>
+
+                <div>
+                  <a
+                    href="https://github.com/webpack/webpack/releases"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {example.version}
+                  </a>
+                </div>
+              </h1>
+            </div>
           </Grid>
           <Grid item md={3}>
             <h1 className={classes.common}>
