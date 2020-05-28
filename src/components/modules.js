@@ -30,10 +30,8 @@ function Module({ module }) {
     <TableRow>
       <TableCell>{module.id}</TableCell>
       <TableCell>
-        <pre>
-        {module.name}
-        </pre>
-        </TableCell>
+        <pre>{module.name}</pre>
+      </TableCell>
       <TableCell>{module.size}</TableCell>
       <TableCell>{Chunks}</TableCell>
       <TableCell>{flags}</TableCell>
@@ -48,7 +46,6 @@ const useModulesStyles = makeStyles({
 });
 
 export default function Modules() {
-  console.log(example.modules);
   const classes = useModulesStyles();
   return (
     <div>

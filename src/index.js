@@ -11,6 +11,8 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Warnings from "./components/warnings";
 import Errors from "./components/errors";
 import Hints from "./components/hints";
+import Module from "./components/Module";
+import Chunk from "./components/chunk";
 
 function Main() {
   return (
@@ -24,6 +26,9 @@ function Main() {
         <Route path="/warnings" component={Warnings} exact />
         <Route path="/errors" component={Errors} exact />
         <Route path="/hints" component={Hints} exact />
+        <Route path="/Modules/:id" component={Module} exact />
+        <Route path="/chunk/:id" component={Chunk} exact />
+        <Route path="/Modules/:id" component={Module} exact />
       </Switch>
     </Router>
   );
