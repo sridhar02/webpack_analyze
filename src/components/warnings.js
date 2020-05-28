@@ -12,7 +12,7 @@ const useWarningsStyles = makeStyles({
     margin: "10px",
     backgroundColor: "#ddd",
     padding: "10px",
-    marginBottom: "20px", 
+    marginBottom: "20px",
   },
   warning: {
     margin: "10px",
@@ -25,13 +25,11 @@ export default function Warnings() {
   const classes = useWarningsStyles();
   const warnings = example.warnings.map((warning) => (
     <div key={warning} className={classes.main}>
-      <h4>
-        {warning.split("\n").map((module, index) => (
-          <div key={index} className={classes.warning}>
-            {module}
-          </div>
-        ))}
-      </h4>
+      {warning.split("\n").map((module, index) => (
+        <div key={index} className={classes.warning}>
+          {module}
+        </div>
+      ))}
     </div>
   ));
 

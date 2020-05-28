@@ -14,7 +14,7 @@ const example = require("../example1.json");
 function Asset({ asset }) {
   console.log(asset);
   const chunks = asset.chunks.map((chunk) => (
-    <a href={`#chunk/${chunk}`} key={chunk} style={{ margin: "10px" }}>
+    <a href={`/chunk/${chunk}`} key={chunk} style={{ margin: "10px" }}>
       {chunk}
     </a>
   ));
@@ -23,7 +23,7 @@ function Asset({ asset }) {
   if (module.emitted) {
     flags = <Chip label="emitted" />;
   } else {
-    flags = <span></span>
+    flags = <span></span>;
   }
   //   //   if (!!module.cacheable) {
   //   //   }
