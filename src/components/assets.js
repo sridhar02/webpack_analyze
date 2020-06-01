@@ -21,21 +21,28 @@ const useModulesStyles = makeStyles({
     padding: "10px",
     borderRadius: "8px",
   },
+  chunk: {
+    border: "1px solid #ddd",
+    backgroundColor: "lightblue",
+    margin: "10px",
+    padding: "8px",
+    borderRadius: "5px",
+    textDecoration: "none",
+  },
 });
 
 function Asset({ asset }) {
   const classes = useModulesStyles();
-  console.log(asset.chunkNames);
   const chunks = asset.chunks.map((chunk) => (
-    <a href={`/chunk/${chunk}`} key={chunk} style={{ margin: "10px" }}>
+    <a href={`/chunk/${chunk}`} key={chunk} className={classes.chunk}>
       {chunk}
     </a>
   ));
 
-  const flags = <Chip label="emitted" />;
-  
+  const flags = <Chip label="emitted" variant="outlined" />;
+
   const names = asset.chunkNames.map((name, index) => (
-    <Chip label={name} key={index} />
+    <Chip label={name} key={index} variant="outlined" />
   ));
 
   return (
@@ -47,7 +54,7 @@ function Asset({ asset }) {
       </TableCell>
       <TableCell>{asset.size} bytes</TableCell>
       <TableCell>{chunks}</TableCell>
-      <TableCell>{asset.chunkNames.length !== 0 ? names : null } </TableCell>
+      <TableCell>{asset.chunkNames.length !== 0 ? names : null} </TableCell>
       <TableCell>{asset.emitted ? flags : null}</TableCell>
     </TableRow>
   );
