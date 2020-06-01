@@ -23,7 +23,7 @@ function Module({ module }) {
     flags = <span>built</span>;
   }
   if (!!module.cacheable) {
-    flags = <Chip label="built" />;
+    flags = <Chip label="built" variant="outlined" />;
   }
 
   return (
