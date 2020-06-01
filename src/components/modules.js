@@ -11,9 +11,33 @@ import { Paper, makeStyles, Chip } from "@material-ui/core";
 import Navbar from "./navbar";
 const example = require("../example1.json");
 
+const useModulesStyles = makeStyles({
+  root:{
+    // maxWidth:"900  "
+  },
+  table: {
+    marginTop: "60px",
+  },
+  chunk: {
+    border: "1px solid #ddd",
+    backgroundColor: "lightblue",
+    margin: "10px",
+    padding: "8px",
+    borderRadius: "5px",
+    textDecoration: "none",
+  },
+  pre: {
+    border: "1px solid #ddd",
+    backgroundColor: "#ddd",
+    padding: "10px",
+    borderRadius: "8px",
+  },
+});
+
 function Module({ module }) {
+  const classes = useModulesStyles();
   const Chunks = module.chunks.map((chunk) => (
-    <a href={`/chunk/${chunk}`} key={chunk}>
+    <a href={`/chunk/${chunk}`} key={chunk} className={classes.chunk}>
       {chunk}
     </a>
   ));
@@ -29,10 +53,12 @@ function Module({ module }) {
   return (
     <TableRow>
       <TableCell>
-        <a href={`/module/${module.id}`}>{module.id}</a>
+        <a href={`/module/${module.id}`} className={classes.chunk}>
+          {module.id}
+        </a>
       </TableCell>
       <TableCell>
-        <pre>{module.name}</pre>
+        <div className={classes.pre}>{module.name}</div>
       </TableCell>
       <TableCell>{module.size}</TableCell>
       <TableCell>{Chunks}</TableCell>
@@ -41,16 +67,10 @@ function Module({ module }) {
   );
 }
 
-const useModulesStyles = makeStyles({
-  table: {
-    marginTop: "60px",
-  },
-});
-
 export default function Modules() {
   const classes = useModulesStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <Navbar />
       <TableContainer component={Paper}>
         <Table className={classes.table}>
