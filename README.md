@@ -1,16 +1,14 @@
-analyse
+# Webpack analyse
 http://webpack.github.com/analyse
 
-Running
+## Running
 You can generate the required JSON file for this tool by running webpack --profile --json > stats.json
 
-Build
+## Build
+
 Development:
 
-grunt dev
-Production:
+```
+npm start 
+```
 
-grunt
-Publish:
-
-grunt deploy
