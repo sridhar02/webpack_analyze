@@ -11,46 +11,49 @@ import { Paper, makeStyles, Chip } from "@material-ui/core";
 import Navbar from "./navbar";
 const example = require("../example1.json");
 
+const useModulesStyles = makeStyles({
+  table: {
+    marginTop: "60px",
+  },
+  pre: {
+    border: "1px solid #ddd",
+    backgroundColor: "#ddd",
+    padding: "10px",
+    borderRadius: "8px",
+  },
+});
+
 function Asset({ asset }) {
-  console.log(asset);
+  const classes = useModulesStyles();
+  console.log(asset.chunkNames);
   const chunks = asset.chunks.map((chunk) => (
     <a href={`/chunk/${chunk}`} key={chunk} style={{ margin: "10px" }}>
       {chunk}
     </a>
   ));
 
-  let flags;
-  if (module.emitted) {
-    flags = <Chip label="emitted" />;
-  } else {
-    flags = <span></span>;
-  }
-  //   //   if (!!module.cacheable) {
-  //   //   }
+  const flags = <Chip label="emitted" />;
+  
+  const names = asset.chunkNames.map((name, index) => (
+    <Chip label={name} key={index} />
+  ));
 
   return (
     <TableRow>
       <TableCell>
-        <pre>
+        <pre className={classes.pre}>
           <code>{asset.name}</code>
         </pre>
       </TableCell>
       <TableCell>{asset.size} bytes</TableCell>
       <TableCell>{chunks}</TableCell>
-      <TableCell></TableCell>
-      <TableCell>{flags}</TableCell>
+      <TableCell>{asset.chunkNames.length !== 0 ? names : null } </TableCell>
+      <TableCell>{asset.emitted ? flags : null}</TableCell>
     </TableRow>
   );
 }
 
-const useModulesStyles = makeStyles({
-  table: {
-    marginTop: "60px",
-  },
-});
-
-export default function Assets() {
-  console.log(example.assets);
+function Assets() {
   const classes = useModulesStyles();
   return (
     <div>
@@ -76,3 +79,5 @@ export default function Assets() {
     </div>
   );
 }
+
+export default Assets;

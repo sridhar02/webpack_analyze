@@ -13,7 +13,7 @@ const example = require("../example1.json");
 
 function Module({ module }) {
   const Chunks = module.chunks.map((chunk) => (
-    <a href={`#chunk/${chunk}`} key={chunk}>
+    <a href={`/chunk/${chunk}`} key={chunk}>
       {chunk}
     </a>
   ));
