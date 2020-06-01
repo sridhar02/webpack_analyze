@@ -98,15 +98,27 @@ export default function Module() {
     <Grid container style={{ marginTop: "80px" }}>
       <Navbar />
       <Grid container>
-        <Grid item md={6} className={classes.container}></Grid>
-        <Grid item md={3} className={classes.container}></Grid>
-        <Grid item md={3} className={classes.container}></Grid>
+        <Grid item md={6}>
+          <div className={classes.container}>asdasd</div>
+        </Grid>
+        <Grid item md={3}>
+          <div className={classes.container}>time</div>
+        </Grid>
+        <Grid item md={3}>
+          <div className={classes.container}>size</div>
+        </Grid>
       </Grid>
 
       <Grid container>
-        <Grid item md={3} className={classes.container}></Grid>
-        <Grid item md={3} className={classes.container}></Grid>
-        <Grid item md={5} className={classes.container}></Grid>
+        <Grid item md={3}>
+          <div className={classes.container}>flags</div>
+        </Grid>
+        <Grid item md={3}>
+          <div className={classes.container}>chunks</div>
+        </Grid>
+        <Grid item md={6}>
+          <div className={classes.container}></div>
+        </Grid>
       </Grid>
       <Grid container className={classes.container}>
         <Grid item md={12}>
