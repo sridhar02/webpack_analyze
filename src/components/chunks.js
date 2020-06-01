@@ -10,11 +10,24 @@ import { Paper, makeStyles, Chip } from "@material-ui/core";
 
 import Navbar from "./navbar";
 const example = require("../example1.json");
+const useModulesStyles = makeStyles({
+  table: {
+    marginTop: "60px",
+  },
+  chunk: {
+    border: "1px solid #ddd",
+    backgroundColor: "lightblue",
+    margin: "10px",
+    padding: "8px",
+    borderRadius: "5px",
+    textDecoration: "none",
+  },
+});
 
 function Chunk({ chunk }) {
-  console.log(chunk);
+  const classes = useModulesStyles();
   const parents = chunk.parents.map((parent) => (
-    <a href={`#chunk/${chunk}`} key={parent} style={{ margin: "10px" }}>
+    <a href={`/chunk/${parent}`} key={parent} className={classes.chunk}>
       {parent}
     </a>
   ));
@@ -23,20 +36,22 @@ function Chunk({ chunk }) {
   if (chunk.rendered && chunk.initial && chunk.entry) {
     flags = (
       <div>
-        <Chip label="rendered" />
-        <Chip label="initial" />
-        <Chip label="entry" />
+        <Chip variant="outlined" label="rendered" />
+        <Chip variant="outlined" label="initial" />
+        <Chip variant="outlined" label="entry" />
       </div>
     );
   } else if (chunk.rendered) {
-    flags = <Chip label="rendered" />;
+    flags = <Chip label="rendered" variant="outlined" />;
   }
-  //   if (!!module.cacheable) {
-  //   }
 
   return (
     <TableRow>
-      <TableCell>{chunk.id}</TableCell>
+      <TableCell>
+        <a className={classes.chunk} href={`/chunk/${chunk.id}`}>
+          {chunk.id}
+        </a>
+      </TableCell>
       <TableCell></TableCell>
       <TableCell>{chunk.modules ? chunk.modules.length : ""}</TableCell>
       <TableCell>{chunk.size}</TableCell>
@@ -46,14 +61,7 @@ function Chunk({ chunk }) {
   );
 }
 
-const useModulesStyles = makeStyles({
-  table: {
-    marginTop: "60px",
-  },
-});
-
 export default function Chunks() {
-  console.log(example.modules);
   const classes = useModulesStyles();
   return (
     <div>
