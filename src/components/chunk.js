@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import Table from "@material-ui/core/Table";
-import { Paper, Grid } from "@material-ui/core";
+import { Paper, Grid, makeStyles } from "@material-ui/core";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
@@ -11,6 +11,22 @@ import TableContainer from "@material-ui/core/TableContainer";
 
 import Navbar from "./navbar";
 const example = require("../example1.json");
+
+const useChunkStyles = makeStyles((theme) => ({
+  container: {
+    padding: "10px",
+    backgroundColor: "#f5f5f5",
+    border: "1px solid #ddd",
+    margin: "10px",
+    borderRadius: "8px",
+  },
+  pre: {
+    border: "1px solid #ddd",
+    backgroundColor: "#ddd",
+    padding: "10px",
+    borderRadius: "8px",
+  },
+}));
 
 function ChunkTable({ id }) {
   return (
@@ -35,7 +51,11 @@ function ChunkTable({ id }) {
               <TableCell>{chunk.size} bytes</TableCell>
               <TableCell>
                 {chunk.chunks.map((chunk, index) => (
-                  <a key={index} href={`/chunk/${chunk}`} style={{ margin: "10px" }}>
+                  <a
+                    key={index}
+                    href={`/chunk/${chunk}`}
+                    style={{ margin: "10px" }}
+                  >
                     {chunk}
                   </a>
                 ))}
@@ -86,27 +106,28 @@ function OriginTable({ id }) {
   );
 }
 
-function Chunk({ classes }) {
+function Chunk() {
   let { id } = useParams();
-  console.log(example.chunks[id].parents, example.chunks[id]);
+  const classes = useChunkStyles();
   return (
     <Grid container style={{ marginTop: "80px" }}>
       <Navbar />
       <Grid container>
-        <Grid item md={4}>
+        <Grid item md={3} className={classes.container}>
           <h4>
             Chunk Id <br />
+            <br />
             {example.chunks[id].id}
           </h4>
         </Grid>
-        <Grid item md={4}>
-            <h4>
-            Size <br /> {example.chunks[id].size}
+        <Grid item md={4} className={classes.container}>
+          <h4>
+            Size <br /> <br /> {example.chunks[id].size}
           </h4>
         </Grid>
-        <Grid item md={4}>
+        <Grid item md={4} className={classes.container}>
           <h4>
-            names <br />{" "}
+            names <br /> <br />
             {example.chunks[id].names.map((name, index) => (
               <code key={index}> {name}</code>
             ))}
@@ -114,10 +135,10 @@ function Chunk({ classes }) {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item md={6}>
+        <Grid item md={5} className={classes.container}>
           <h4>parents</h4>
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={6} className={classes.container}>
           <h4>
             files <br />{" "}
             {example.chunks[id].files.map((file, index) => (
@@ -128,13 +149,13 @@ function Chunk({ classes }) {
           </h4>
         </Grid>
       </Grid>
-      <Grid container>
+      <Grid container className={classes.container}>
         <Grid item md={12}>
           <h4>origins</h4>
           <OriginTable id={id} />
         </Grid>
       </Grid>
-      <Grid container>
+      <Grid container className={classes.container}>
         <Grid item md={12}>
           <h4>Modules</h4>
           <ChunkTable id={id} />

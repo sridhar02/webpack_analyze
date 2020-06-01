@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import Table from "@material-ui/core/Table";
-import { Paper, Grid } from "@material-ui/core";
+import { makeStyles, Paper, Grid } from "@material-ui/core";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
@@ -11,6 +11,16 @@ import TableContainer from "@material-ui/core/TableContainer";
 
 import Navbar from "./navbar";
 const example = require("../example1.json");
+
+const useModuleStyles = makeStyles((theme) => ({
+  container: {
+    padding: "10px",
+    backgroundColor: "#f5f5f5",
+    border: "1px solid #ddd",
+    margin: "10px",
+    borderRadius: "8px",
+  },
+}));
 
 function ReasonsTable({ id }) {
   console.log(example.modules[id].reasons);
@@ -81,36 +91,36 @@ function DependenciesTable({ id }) {
 
 export default function Module() {
   let { id } = useParams();
-
-  console.log(example.modules[id].reasons);
+  const classes = useModuleStyles();
+  console.log(example.modules[id]);
 
   return (
     <Grid container style={{ marginTop: "80px" }}>
       <Navbar />
       <Grid container>
-        <Grid item md={6}></Grid>
-        <Grid item md={3}></Grid>
-        <Grid item md={3}></Grid>
+        <Grid item md={6} className={classes.container}></Grid>
+        <Grid item md={3} className={classes.container}></Grid>
+        <Grid item md={3} className={classes.container}></Grid>
       </Grid>
 
       <Grid container>
-        <Grid item md={3}></Grid>
-        <Grid item md={3}></Grid>
-        <Grid item md={6}></Grid>
+        <Grid item md={3} className={classes.container}></Grid>
+        <Grid item md={3} className={classes.container}></Grid>
+        <Grid item md={5} className={classes.container}></Grid>
       </Grid>
-      <Grid container>
+      <Grid container className={classes.container}>
         <Grid item md={12}>
           <h4>reasons</h4>
           <ReasonsTable id={id} />
         </Grid>
       </Grid>
-      <Grid container>
+      <Grid container className={classes.container}>
         <Grid item md={12}>
           <h4>dependencies</h4>
           <DependenciesTable id={id} />
         </Grid>
       </Grid>
-      <Grid container>
+      <Grid container className={classes.container}>
         <Grid item md={12}>
           <pre>{example.modules[id].source}</pre>
         </Grid>
