@@ -28,7 +28,9 @@ function Module({ module }) {
 
   return (
     <TableRow>
-      <TableCell>{module.id}</TableCell>
+      <TableCell>
+        <a href={`/module/${module.id}`}>{module.id}</a>
+      </TableCell>
       <TableCell>
         <pre>{module.name}</pre>
       </TableCell>
